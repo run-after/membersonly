@@ -1,3 +1,4 @@
+require('dotenv').config();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
@@ -33,8 +34,23 @@ exports.sign_up_form_post = [
     } else {
       user.save(function (err) {
         if (err) { return next(err); };
-        res.redirect('/');
+        res.redirect('/confirm');
       });
     };
   }
 ];
+
+exports.confirm_membership_get = (req, res, next) => {
+  res.render('confirm');
+};
+
+exports.confirm_membership_post = (req, res, next) => {
+  const answer = req.body.answer;
+  if (answer.toLowerCase() === process.env.SECRET_PASSWORD) {
+    // once I have sessions, then I will need to update membership status
+    res.redirect('/');  
+  } else {
+    res.render('confirm', { message: 'Wrong, try again.' });
+  };
+  
+};

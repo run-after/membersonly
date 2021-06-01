@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/sign-up', userController.sign_up_form_get);
 
-router.post('/sign-up', userController.sign_up_form_post)
+router.post('/sign-up', userController.sign_up_form_post);
+
+router.get('/confirm', userController.confirm_membership_get);
+
+router.post('/confirm', userController.confirm_membership_post);
 
 module.exports = router;

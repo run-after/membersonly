@@ -9,9 +9,9 @@ block content
         li=error.msg
 
   form.sign-up-form(method='POST' action='')
-    input#first_name(type='text' placeholder='First name' name='first_name')
-    input#last_name(type='text' placeholder='Last name' name='last_name')
-    input#username(type='text' placeholder='username' name='username')
+    input#first_name(type='text' placeholder='First name' name='first_name' value=(undefined===user ? '' : user.first_name))
+    input#last_name(type='text' placeholder='Last name' name='last_name' value=(undefined===user ? '' : user.last_name))
+    input#username(type='text' placeholder='username' name='username' value=(undefined===user ? '' : user.username))
     input#password(type='password' placeholder='password' name='password')
     input#password-confirmation(type='password' placeholder='confirm' name='password-confirmation')
     button.primary-btn(type='submit') Sign up

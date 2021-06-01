@@ -1,0 +1,11 @@
+extends layout 
+block content 
+
+  h1 Confirm your membership
+  p In order to allow you into this highly selective club, you need to answer one question:
+  p When dealing with chemistry, what is an HFC?
+  p.error=message
+
+  form(action='' method='POST')
+    input#answer(type='text' name='answer' placeholder='Your answer')
+    button(type='submit') Confirm

@@ -1,8 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
 }
 
-a {
-  color: #00B7FF;
+.primary-btn {
+}
+
+.error {
+  color: red;
 }

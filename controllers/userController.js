@@ -34,7 +34,13 @@ exports.sign_up_form_post = [
     } else {
       user.save(function (err) {
         if (err) { return next(err); };
-        res.redirect('/confirm');
+        passport.authenticate('local', function (err, user, info) {
+          if (err) { return next(err); };
+          req.logIn(user, function (err) {
+            if (err) { return next(err); };
+            return res.redirect('/confirm');
+          });
+        })(req, res, next);
       });
     };
   }
@@ -47,8 +53,10 @@ exports.confirm_membership_get = (req, res, next) => {
 exports.confirm_membership_post = (req, res, next) => {
   const answer = req.body.answer;
   if (answer.toLowerCase() === process.env.SECRET_PASSWORD) {
-    // once I have sessions, then I will need to update membership status
-    res.redirect('/');  
+    User.findOneAndUpdate({ _id: req.user.id }, { member: true }).exec((err, user) => {
+      if (err) { return next(err); };
+      res.render('index', {title: 'Express', user: user });
+    });    
   } else {
     res.render('confirm', { message: 'Wrong, try again.' });
   };

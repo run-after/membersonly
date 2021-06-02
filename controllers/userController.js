@@ -1,7 +1,7 @@
 require('dotenv').config();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-
+const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 
 exports.sign_up_form_get = (req, res, next) => {
@@ -54,3 +54,25 @@ exports.confirm_membership_post = (req, res, next) => {
   };
   
 };
+
+exports.login_get = (req, res, next) => {
+  res.render('login', { title: 'Log in' });
+};
+
+exports.login_post = [
+
+  body('username', 'You must enter a username').trim().isLength({ min: 1 }).escape(),
+  
+  (req, res, next) => {
+    passport.authenticate('local', function (err, user, info) {
+      if (err) { return next(err); };
+      if (!user) {
+        res.render('login', { title: 'login', user: req.body.username })
+      };
+      req.logIn(user, function (err) {
+        if (err) { return next(err); };
+        return res.redirect('/');
+      });
+    })(req, res, next);
+  }
+];

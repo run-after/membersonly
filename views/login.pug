@@ -1,0 +1,11 @@
+extends layout 
+block content 
+
+  h1=title
+  if message 
+    p=message
+
+  form(action='' method='POST')
+    input#username(type='text' name='username' required=true placeholder='Username' value=(user === undefined ? '' : user))
+    input#password(type='password' name='password' required=true placeholder='Password')
+    button(type='submit') Login

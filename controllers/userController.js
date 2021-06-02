@@ -4,6 +4,12 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 
+
+
+exports.index = function(req, res, next) {
+  res.render('index', { title: 'Members Only', user: req.user });
+};
+
 exports.sign_up_form_get = (req, res, next) => {
   res.render('sign_up', { title: 'Sign up' });
 };

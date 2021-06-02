@@ -3,9 +3,7 @@ var router = express.Router();
 const userController = require('../controllers/userController.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', user: req.user });
-});
+router.get('/', userController.index);
 
 router.get('/sign-up', userController.sign_up_form_get);
 

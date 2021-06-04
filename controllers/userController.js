@@ -1,13 +1,18 @@
 require('dotenv').config();
 const User = require('../models/User');
+const Message = require('../models/Message');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 
 
 
-exports.index = function(req, res, next) {
-  res.render('index', { title: 'Members Only', user: req.user });
+exports.index = function (req, res, next) {
+  // Will sort this by date created
+  Message.find().populate('author').sort([['createdAt', 'descending']]).exec(function (err, list_messages) {
+    if (err) { return next(err); };
+    res.render('index', { title: 'Members Only', messages: list_messages });
+  });
 };
 
 exports.sign_up_form_get = (req, res, next) => {

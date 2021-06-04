@@ -9,4 +9,8 @@ const MessageSchema = new Schema(
   }, {timestamps: true}
 );
 
+MessageSchema.virtual('formatted_date').get(function () {
+  return `${this.createdAt.getMonth() + 1}/${this.createdAt.getDate()}/${this.createdAt.getFullYear()}`;
+})
+
 module.exports = mongoose.model('Message', MessageSchema);

@@ -83,10 +83,11 @@ exports.login_post = [
   body('username', 'You must enter a username').trim().isLength({ min: 1 }).escape(),
   
   (req, res, next) => {
+    const errors = validationResult(req);
     passport.authenticate('local', function (err, user, info) {
       if (err) { return next(err); };
       if (!user) {
-        res.render('login', { title: 'login', user: req.body.username })
+        res.render('login', { title: 'login', user: req.body.username, errors: errors.array(), message: info.message })
       };
       req.logIn(user, function (err) {
         if (err) { return next(err); };

@@ -1,6 +1,6 @@
 # Members Only
 
-<img src='https://github.com/run-after/readit/blob/main/src/media/screenshot.png' alt='readit' width='100%' />
+<img src='https://github.com/run-after/membersonly/blob/main/public/images/Screenshot_2021-06-04%20Members%20Only.png' alt='Members Onlyl' width='100%' />
   
 - **Built with Node.js and express**
 - **Utilized MongoDB**

@@ -1,14 +1,12 @@
 extends layout 
 block content 
 
-  h1=title
-
-  ul
+  form(method='POST' action='').form
+    h2.title=title
+    ul
     if errors 
       each error in errors
         li.error=error.msg
-
-  form.sign-up-form(method='POST' action='')
     input#first_name(type='text' placeholder='First name' name='first_name' value=(undefined===user ? '' : user.first_name))
     input#last_name(type='text' placeholder='Last name' name='last_name' value=(undefined===user ? '' : user.last_name))
     input#username(type='text' placeholder='username' name='username' value=(undefined===user ? '' : user.username))

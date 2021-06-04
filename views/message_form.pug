@@ -1,13 +1,12 @@
 extends layout 
-block content 
-  h1=title
+block content
 
-  if errors 
+  form(method='POST' action='').form
+    h2.title=title
+    if errors 
     ul 
       each error in errors 
         li.error=error.msg
-
-  form(method='POST' action='').message-form
     input#title(type='text' name='title' placeholder='Title' value=(message===undefined ? '' : message.title))
     textarea#body(name='body' placeholder='What have you got to say?') #{message===undefined ? '' : message.body}
     button(type='submit') Create message

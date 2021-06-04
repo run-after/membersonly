@@ -1,0 +1,12 @@
+extends layout 
+block content 
+  h2.title=title
+
+  form(action='' method='POST').form
+    p Administrators have the ability to delete messages.
+    p If you think you have what it takes to be an admin, answer this question: 
+    p What is 2 + 2 = ?
+    if message 
+      p.error=message
+    input#answer(name='answer' type='text' placeholder='Your answer')
+    button(type='submit') Submit

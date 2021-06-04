@@ -66,7 +66,7 @@ exports.confirm_membership_post = (req, res, next) => {
   if (answer.toLowerCase() === process.env.SECRET_PASSWORD) {
     User.findOneAndUpdate({ _id: req.user.id }, { member: true }).exec((err, user) => {
       if (err) { return next(err); };
-      res.render('index', {title: 'Confirm', user: user });
+      res.redirect('/');
     });    
   } else {
     res.render('confirm', { message: 'Wrong, try again.' });
@@ -101,3 +101,19 @@ exports.logout = (req, res) => {
   req.logout();
   res.redirect('/');
 };
+
+exports.admin_get = (req, res) => {
+  res.render('admin', { title: 'Become an administrator' });
+}
+
+exports.admin_post = (req, res) => {
+  const answer = req.body.answer;
+  if (answer === process.env.ADMIN_ANSWER) {
+    User.findOneAndUpdate({ _id: req.user.id }, { admin: true }).exec((err, user) => {
+      if (err) { return next(err); };
+      res.redirect('/');
+    });    
+  } else {
+    res.render('admin', { message: 'Wrong, try again.' });
+  };
+}

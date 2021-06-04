@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userController = require('../controllers/userController.js');
+const messageController = require('../controllers/messageController');
 
 /* GET home page. */
 router.get('/', userController.index);
@@ -17,6 +18,10 @@ router.get('/login', userController.login_get);
 
 router.post('/login', userController.login_post);
 
-router.get('/logout', userController.logout)
+router.get('/logout', userController.logout);
+
+router.get('/message/new', messageController.new_message_get);
+
+router.post('/message/new', messageController.new_message_post);
 
 module.exports = router;

@@ -1,11 +1,17 @@
 extends layout 
-block content 
+block content
 
-  h1=title
-  if message 
-    p=message
-
-  form(action='' method='POST')
+  form(action='' method='POST').form
+    h2.title=title
+    if message 
+      p.error=message
+    if errors 
+      ul 
+        each error in errors
+          li.error=error.msgul
+    if errors 
+      each error in errors
+        li.error=error.msg 
     input#username(type='text' name='username' required=true placeholder='Username' value=(user === undefined ? '' : user))
     input#password(type='password' name='password' required=true placeholder='Password')
     button(type='submit') Login

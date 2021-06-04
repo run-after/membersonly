@@ -1,3 +1,23 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  background: darkgray;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header h1 {
+  font-size: 2.5em;
+}
+
+.header .links {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
 .sign-up-form {
   display: flex;
   flex-direction: column;

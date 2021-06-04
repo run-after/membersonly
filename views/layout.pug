@@ -4,5 +4,19 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+  header
+      div.header
+        h1.title Members Only (Like the jacket)
+        div.links
+          if currentUser 
+              h5.user Hi, #{currentUser.first_name}.
+              a(href='/logout') Log out
+              if currentUser.member
+                a(href='/post/new') Create post
+              else 
+                a(href='/confirm') Activate membership
+          else 
+            a(href='/login') Log in
+            a(href='/sign-up') Sign up
   body
     block content

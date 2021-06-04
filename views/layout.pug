@@ -8,16 +8,16 @@ html
       div.header
         h1.title Members Only (Like the jacket)
         div.links
-          a(href='/') Home
+          a(href='/').link Home
           if currentUser 
               h5.user Hi, #{currentUser.first_name}.
-              a(href='/logout') Log out
+              a(href='/logout').link Log out
               if currentUser.member
-                a(href='/message/new') Create post
+                a(href='/message/new').link Create post
               else 
-                a(href='/confirm') Activate membership
+                a(href='/confirm').link Activate membership
           else 
-            a(href='/login') Log in
-            a(href='/sign-up') Sign up
+            a(href='/login').link Log in
+            a(href='/sign-up').link Sign up
   body
     block content

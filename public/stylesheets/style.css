@@ -79,3 +79,12 @@ body {
 .message-timestamp {
   opacity: 0.5;
 }
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  opacity: 0.5;
+}

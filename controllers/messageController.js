@@ -24,10 +24,14 @@ exports.new_message_post = [
       message.save(function (err) {
         if (err) { return next(err); };
         res.redirect('/');
-        // Might be nice to have a flash message
       });
-    }
-
-    
+    };    
   }
 ];
+
+exports.delete_message = (req, res) => {
+  Message.findByIdAndDelete(req.params.id).exec(function (err) {
+    if (err) { return next(err); };
+    res.redirect('/');
+  });
+};

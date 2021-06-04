@@ -7,6 +7,8 @@ block content
       each message in messages
         div.message
           if currentUser
+            if currentUser.admin
+              a(href=`/message/${message._id}/delete`) Delete Message
             if currentUser.member
               p.message-author #{message.author.first_name} wrote:
           p.message-timestamp=message.formatted_date 

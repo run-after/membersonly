@@ -8,6 +8,7 @@ html
       div.header
         h1.title Members Only (Like the jacket)
         div.links
+          a(href='/') Home
           if currentUser 
               h5.user Hi, #{currentUser.first_name}.
               a(href='/logout') Log out

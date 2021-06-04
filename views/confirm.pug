@@ -5,5 +5,7 @@ block content
       h2.title Confirm your membership
       p In order to allow you into this highly selective club, you need to answer one question:
       p When dealing with chemistry, what is an HFC?
+      if message 
+        p.error=message
       input#answer(type='text' name='answer' placeholder='Your answer')
       button(type='submit') Confirm

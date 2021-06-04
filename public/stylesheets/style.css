@@ -23,9 +23,11 @@
   flex-direction: column;
 }
 
-.primary-btn {
-}
-
 .error {
   color: red;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
 }

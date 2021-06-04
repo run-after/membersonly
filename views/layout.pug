@@ -12,7 +12,7 @@ html
               h5.user Hi, #{currentUser.first_name}.
               a(href='/logout') Log out
               if currentUser.member
-                a(href='/post/new') Create post
+                a(href='/message/new') Create post
               else 
                 a(href='/confirm') Activate membership
           else 

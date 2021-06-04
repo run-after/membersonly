@@ -12,14 +12,15 @@ exports.new_message_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
+    const message = new Message({
+      title: req.body.title,
+      body: req.body.body,
+      author: req.user
+    });
+
     if (!errors.isEmpty()) {
-      res.render('message_form', { title: 'Create Message', errors: errors.array() });
+      res.render('message_form', { title: 'Create Message', message: message, errors: errors.array() });
     } else {
-      const message = new Message({
-        title: req.body.title,
-        body: req.body.body,
-        author: req.user
-      });
       message.save(function (err) {
         if (err) { return next(err); };
         res.redirect('/');

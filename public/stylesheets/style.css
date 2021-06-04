@@ -88,3 +88,14 @@ body {
 .link:hover {
   opacity: 0.5;
 }
+
+.delete-btn {
+  background: darkgray;
+  color: white;
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+.delete-btn:hover {
+  opacity: 0.5;
+}

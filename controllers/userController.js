@@ -61,7 +61,7 @@ exports.confirm_membership_post = (req, res, next) => {
   if (answer.toLowerCase() === process.env.SECRET_PASSWORD) {
     User.findOneAndUpdate({ _id: req.user.id }, { member: true }).exec((err, user) => {
       if (err) { return next(err); };
-      res.render('index', {title: 'Express', user: user });
+      res.render('index', {title: 'Confirm', user: user });
     });    
   } else {
     res.render('confirm', { message: 'Wrong, try again.' });
@@ -90,3 +90,8 @@ exports.login_post = [
     })(req, res, next);
   }
 ];
+
+exports.logout = (req, res) => {
+  req.logout();
+  res.redirect('/');
+};

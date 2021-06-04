@@ -10,10 +10,14 @@ html
         div.links
           a(href='/').link Home
           if currentUser 
-              h5.user Hi, #{currentUser.first_name}.
+              h5.user Hi, #{currentUser.first_name}
+                if currentUser.admin
+                  | (admin).
               a(href='/logout').link Log out
               if currentUser.member
                 a(href='/message/new').link Create post
+                if !currentUser.admin
+                  a(href='/admin').link Take the admin test
               else 
                 a(href='/confirm').link Activate membership
           else 
